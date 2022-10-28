@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
     _flutterMidi.prepare(sf2: _byte, name: _value.replaceAll('assets/', ''));
   }
 
-  String _value = 'assets/Piano.sf2';
+  String _value = 'assets/Yamaha-Grand-Lite-v2.sf2';
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +70,48 @@ class _MyAppState extends State<MyApp> {
               child: Text('Play C'),
               onPressed: () {
                 _play(60);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Play D'),
+              onPressed: () {
+                _play(62);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Play E'),
+              onPressed: () {
+                _play(64);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Play F'),
+              onPressed: () {
+                _play(65);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Play G'),
+              onPressed: () {
+                _play(67);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Play A'),
+              onPressed: () {
+                _play(69);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Play B'),
+              onPressed: () {
+                _play(71);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Play C'),
+              onPressed: () {
+                _play(72);
               },
             ),
           ],
