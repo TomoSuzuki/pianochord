@@ -114,6 +114,14 @@ class _MyAppState extends State<MyApp> {
                 _play(72);
               },
             ),
+            ElevatedButton(
+              child: Text('Chord C'),
+              onPressed: () {
+                _play(60);
+                _play(64);
+                _play(67);
+              },
+            ),
           ],
         )),
       ),
