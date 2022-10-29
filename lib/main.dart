@@ -3,7 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_midi/flutter_midi.dart';
 import 'package:flutter/foundation.dart';
 
-void main() => runApp(MyApp());
+//void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+          [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight])
+      .then((_) => {runApp(MyApp())});
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -66,54 +72,24 @@ class _MyAppState extends State<MyApp> {
             //     load(_value);
             //   },
             // ),
+
             ElevatedButton(
-              child: Text('Play C'),
+              child: Text('Chord C'),
               onPressed: () {
                 _play(60);
-              },
-            ),
-            ElevatedButton(
-              child: Text('Play D'),
-              onPressed: () {
-                _play(62);
-              },
-            ),
-            ElevatedButton(
-              child: Text('Play E'),
-              onPressed: () {
                 _play(64);
-              },
-            ),
-            ElevatedButton(
-              child: Text('Play F'),
-              onPressed: () {
-                _play(65);
-              },
-            ),
-            ElevatedButton(
-              child: Text('Play G'),
-              onPressed: () {
                 _play(67);
               },
             ),
             ElevatedButton(
-              child: Text('Play A'),
+              child: Text('Chord G'),
               onPressed: () {
-                _play(69);
+                _play(59);
+                _play(62);
+                _play(67);
               },
             ),
-            ElevatedButton(
-              child: Text('Play B'),
-              onPressed: () {
-                _play(71);
-              },
-            ),
-            ElevatedButton(
-              child: Text('Play C'),
-              onPressed: () {
-                _play(72);
-              },
-            ),
+            const SizedBox(height: 20),
             ElevatedButton(
               child: Text('Chord C'),
               onPressed: () {
