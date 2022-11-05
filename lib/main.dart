@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
               Clef.Treble,
             ]),
             onNotePositionTapped: (position) {
-              //print(position);
+              debugPrint('$position');
               _play(60);
               // Use an audio library like flutter_midi to play the sound
             },
