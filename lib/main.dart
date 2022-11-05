@@ -5,7 +5,10 @@ import 'package:flutter_midi/flutter_midi.dart';
 import 'package:piano/piano.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+          [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight])
+      .then((_) => {runApp(MyApp())});
 }
 
 class MyApp extends StatefulWidget {
