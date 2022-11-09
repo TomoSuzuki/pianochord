@@ -47,7 +47,9 @@ class _MyAppState extends State<MyApp> {
             ]),
             onNotePositionTapped: (position) {
               debugPrint('$position');
-              _play(60);
+              int myPosition = positionToNum(position);
+              debugPrint(myPosition.toString());
+              _play(myPosition);
               // Use an audio library like flutter_midi to play the sound
             },
           ),
@@ -57,4 +59,22 @@ class _MyAppState extends State<MyApp> {
   void _play(int midi) {
     _flutterMidi.playMidiNote(midi: midi);
   }
+
+  int positionToNum(NotePosition position) {
+    if (position.note == Note.C) {
+      return 60;
+    } else {
+      return 0;
+    }
+  }
+}
+
+enum Notes {
+  c,
+  d,
+  e,
+  f,
+  g,
+  a,
+  b,
 }
