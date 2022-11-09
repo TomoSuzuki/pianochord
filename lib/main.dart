@@ -63,6 +63,18 @@ class _MyAppState extends State<MyApp> {
   int positionToNum(NotePosition position) {
     if (position.note == Note.C) {
       return 60;
+    } else if (position.note == Note.D) {
+      return 62;
+    } else if (position.note == Note.E) {
+      return 64;
+    } else if (position.note == Note.F) {
+      return 65;
+    } else if (position.note == Note.G) {
+      return 67;
+    } else if (position.note == Note.A) {
+      return 69;
+    } else if (position.note == Note.B) {
+      return 71;
     } else {
       return 0;
     }
