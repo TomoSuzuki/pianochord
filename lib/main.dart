@@ -47,12 +47,9 @@ class _MyAppState extends State<MyApp> {
             ]),
             onNotePositionTapped: (position) {
               debugPrint('$position');
-              int myAccidental = acctidentalToNum(position);
-              int myOctaveToNum = octaveToNum(position);
               int myPosition = positionToNum(position) +
-                  myAccidental +
-                  myOctaveToNum +
-                  baseNote;
+                  acctidentalToNum(position) +
+                  octaveToNum(position);
               debugPrint(myPosition.toString());
               _play(myPosition);
               // Use an audio library like flutter_midi to play the sound
@@ -65,7 +62,6 @@ class _MyAppState extends State<MyApp> {
     _flutterMidi.playMidiNote(midi: midi);
   }
 
-  final baseNote = 60;
   int positionToNum(NotePosition position) {
     if (position.note == Note.C) {
       return 0;
@@ -95,13 +91,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   int octaveToNum(NotePosition position) {
-    if (position.octave == 5) {
-      return 12;
-    } else if (position.octave == 6) {
-      return 24;
-    } else {
-      return 0;
-    }
+    return (position.octave + 1) * 12;
   }
 }
 
