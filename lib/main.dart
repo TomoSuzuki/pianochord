@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
-        title: 'Piano Demo',
+        title: 'Piano Chord Trainer',
         home: Center(
           child: InteractivePiano(
             highlightedNotes: [NotePosition(note: Note.C, octave: 3)],
@@ -63,22 +63,23 @@ class _MyAppState extends State<MyApp> {
   }
 
   int positionToNum(NotePosition position) {
-    if (position.note == Note.C) {
-      return 0;
-    } else if (position.note == Note.D) {
-      return 2;
-    } else if (position.note == Note.E) {
-      return 4;
-    } else if (position.note == Note.F) {
-      return 5;
-    } else if (position.note == Note.G) {
-      return 7;
-    } else if (position.note == Note.A) {
-      return 9;
-    } else if (position.note == Note.B) {
-      return 11;
-    } else {
-      return 0;
+    switch (position.note) {
+      case Note.C:
+        return 0;
+      case Note.D:
+        return 2;
+      case Note.E:
+        return 4;
+      case Note.F:
+        return 5;
+      case Note.G:
+        return 7;
+      case Note.A:
+        return 9;
+      case Note.B:
+        return 11;
+      default:
+        return 0;
     }
   }
 
@@ -93,14 +94,4 @@ class _MyAppState extends State<MyApp> {
   int octaveToNum(NotePosition position) {
     return (position.octave + 1) * 12;
   }
-}
-
-enum Notes {
-  c,
-  d,
-  e,
-  f,
-  g,
-  a,
-  b,
 }
