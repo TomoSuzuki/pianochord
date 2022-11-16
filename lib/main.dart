@@ -69,9 +69,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class SoundPlay extends FlutterMidi {
-  //final _flutterMidi = FlutterMidi();
-
+class SoundPlay {
   static int _positionToNum(NotePosition position) {
     switch (position.note) {
       case Note.C:
