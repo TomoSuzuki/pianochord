@@ -18,6 +18,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _flutterMidi = FlutterMidi();
+
   @override
   void initState() {
     load(_value);
@@ -38,7 +39,14 @@ class _MyAppState extends State<MyApp> {
         title: 'Piano Chord Trainer',
         home: Center(
           child: InteractivePiano(
-            highlightedNotes: [NotePosition(note: Note.C, octave: 3)],
+            highlightedNotes: [
+              NotePosition(
+                  note: Note.C, octave: 4, accidental: Accidental.None),
+              NotePosition(
+                  note: Note.E, octave: 4, accidental: Accidental.None),
+              NotePosition(
+                  note: Note.G, octave: 4, accidental: Accidental.None),
+            ],
             naturalColor: Colors.white,
             accidentalColor: Colors.black,
             keyWidth: 60,
@@ -47,9 +55,7 @@ class _MyAppState extends State<MyApp> {
             ]),
             onNotePositionTapped: (position) {
               debugPrint('$position');
-              int myPosition = positionToNum(position) +
-                  acctidentalToNum(position) +
-                  octaveToNum(position);
+              int myPosition = SoundPlay.noteNum(position);
               debugPrint(myPosition.toString());
               _play(myPosition);
               // Use an audio library like flutter_midi to play the sound
@@ -61,8 +67,12 @@ class _MyAppState extends State<MyApp> {
   void _play(int midi) {
     _flutterMidi.playMidiNote(midi: midi);
   }
+}
 
-  int positionToNum(NotePosition position) {
+class SoundPlay extends FlutterMidi {
+  //final _flutterMidi = FlutterMidi();
+
+  static int _positionToNum(NotePosition position) {
     switch (position.note) {
       case Note.C:
         return 0;
@@ -83,7 +93,7 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  int acctidentalToNum(NotePosition position) {
+  static int _acctidentalToNum(NotePosition position) {
     if (position.accidental == Accidental.Sharp) {
       return 1;
     } else {
@@ -91,7 +101,13 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  int octaveToNum(NotePosition position) {
+  static int _octaveToNum(NotePosition position) {
     return (position.octave + 1) * 12;
+  }
+
+  static int noteNum(NotePosition position) {
+    return _positionToNum(position) +
+        _acctidentalToNum(position) +
+        _octaveToNum(position);
   }
 }
