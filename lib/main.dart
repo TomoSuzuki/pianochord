@@ -37,29 +37,34 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return CupertinoApp(
         title: 'Piano Chord Trainer',
-        home: Center(
-          child: InteractivePiano(
-            highlightedNotes: [
-              NotePosition(
-                  note: Note.C, octave: 4, accidental: Accidental.None),
-              NotePosition(
-                  note: Note.E, octave: 4, accidental: Accidental.None),
-              NotePosition(
-                  note: Note.G, octave: 4, accidental: Accidental.None),
-            ],
-            naturalColor: Colors.white,
-            accidentalColor: Colors.black,
-            keyWidth: 60,
-            noteRange: NoteRange.forClefs([
-              Clef.Treble,
-            ]),
-            onNotePositionTapped: (position) {
-              debugPrint('$position');
-              int myPosition = SoundPlay.noteNum(position);
-              debugPrint(myPosition.toString());
-              _play(myPosition);
-              // Use an audio library like flutter_midi to play the sound
-            },
+        home: CupertinoPageScaffold(
+          navigationBar: CupertinoNavigationBar(
+            middle: Text('C'),
+          ),
+          child: Center(
+            child: InteractivePiano(
+              highlightedNotes: [
+                NotePosition(
+                    note: Note.C, octave: 4, accidental: Accidental.None),
+                NotePosition(
+                    note: Note.E, octave: 4, accidental: Accidental.None),
+                NotePosition(
+                    note: Note.G, octave: 4, accidental: Accidental.None),
+              ],
+              naturalColor: Colors.white,
+              accidentalColor: Colors.black,
+              keyWidth: 80,
+              noteRange: NoteRange.forClefs([
+                Clef.Treble,
+              ]),
+              onNotePositionTapped: (position) {
+                debugPrint('$position');
+                int myPosition = SoundPlay.noteNum(position);
+                debugPrint(myPosition.toString());
+                _play(myPosition);
+                // Use an audio library like flutter_midi to play the sound
+              },
+            ),
           ),
         ));
   }
