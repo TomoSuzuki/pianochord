@@ -31,18 +31,19 @@ class _MyAppState extends State<MyApp> {
     _flutterMidi.prepare(sf2: _byte, name: _value.replaceAll('assets/', ''));
   }
 
-  String _value = 'assets/Yamaha-Grand-Lite-v2.0.sf2';
+  final String _value = 'assets/Yamaha-Grand-Lite-v2.0.sf2';
 
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
         title: 'Piano Chord Trainer',
         home: CupertinoPageScaffold(
-          navigationBar: CupertinoNavigationBar(
-            middle: Text('C'),
+          navigationBar: const CupertinoNavigationBar(
+            middle: Text('Piano Chord Trainer'),
           ),
           child: Center(
             child: InteractivePiano(
+              hideNoteNames: true,
               highlightedNotes: [
                 NotePosition(
                     note: Note.C, octave: 4, accidental: Accidental.None),
